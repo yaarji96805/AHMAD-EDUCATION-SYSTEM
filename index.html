@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHMAD DIGITAL SCHOOL - FULL SYSTEM</title>
+<style>
+*{box-sizing:border-box;font-family:Consolas,Segoe UI,Arial;margin:0}
+body{background:#050a14;color:#c7f8ff;display:flex;min-height:100vh}
+.sidebar{width:280px;background:#081022;border-right:2px solid #00f5ff;padding:18px;position:sticky;top:0;height:100vh;overflow:auto}
+.logo{border:1px solid #00f5ff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 0 20px #00f5ff66;margin-bottom:15px}
+.logo h2{color:#00f5ff;text-shadow:0 0 15px #00f5ff}
+.menu b{font-size:10px;color:#5aa5b5;letter-spacing:2px;display:block;margin:18px 0 6px}
+.menu button{width:100%;text-align:left;padding:11px 12px;margin:3px 0;background:#0d1a33;border:1px solid #0a2a4a;border-radius:10px;color:#7ad9e8;cursor:pointer}
+.menu button.active,.menu button:hover{background:#00f5ff;color:#000;box-shadow:0 0 20px #00f5ff;font-weight:bold}
+.main{flex:1}
+.topbar{padding:12px 18px;border-bottom:1px solid #00f5ff33;background:#081022;display:flex;justify-content:space-between}
+.content{padding:16px}
+.card{background:linear-gradient(135deg,#0a1930,#0c2340);border:1px solid #00f5ff44;border-radius:14px;padding:16px;margin-bottom:14px;box-shadow:0 0 18px #00f5ff18}
+.neon{width:100%;padding:11px;background:transparent;border:2px solid #00f5ff;color:#00f5ff;border-radius:10px;font-weight:bold;cursor:pointer;box-shadow:0 0 12px #00f5ff66;margin-top:6px}
+.neon:hover{background:#00f5ff;color:#000}
+input,select,textarea{width:100%;padding:10px;margin:5px 0;background:#050a14;border:1px solid #00f5ff44;border-radius:10px;color:#c7f8ff}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:#00f5ff;padding:9px;border-bottom:1px solid #00f5ff44;text-align:left;font-size:10px}
+td{padding:9px;border-bottom:1px solid #123050}
+.hidden{display:none!important}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{border:1px solid #00f5ff44;background:linear-gradient(135deg,#0a1930,#102a4a);border-radius:14px;padding:14px;text-align:center}
+.stat h3{font-size:28px;color:#00f5ff;text-shadow:0 0 12px #00f5ff}
+@media(max-width:900px){body{flex-direction:column}.sidebar{width:100%;height:auto;position:relative}.grid4,.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="sidebar">
+<div class="logo"><div style="font-size:28px">🎓⚡</div><h2>AHMAD<br>DIGITAL SCHOOL</h2><small>FULL SYSTEM - ALL INSIDE</small></div>
+<div class="menu">
+<b>DASHBOARD</b>
+<button class="active" onclick="go('dash',this)">🏠 Dashboard + Marksheet</button>
+<b>ACADEMIC</b>
+<button onclick="go('students',this)">👥 Students Management</button>
+<button onclick="go('teachers',this)">👨‍🏫 Teachers</button>
+<button onclick="go('marksheet',this)">📝 Marksheet - 6 Subjects</button>
+<button onclick="go('attendance',this)">📅 Attendance</button>
+<button onclick="go('timetable',this)">⏰ Timetable</button>
+<b>ACCOUNTS</b>
+<button onclick="go('fees',this)">💰 Fees Record</button>
+<b>RESULTS</b>
+<button onclick="go('results',this)">📊 All Results</button>
+<button onclick="go('parent',this)">🔍 Parent Portal</button>
+<button onclick="go('reports',this)">🖨️ Print Reports</button>
+<b>SYSTEM</b>
+<button onclick="go('settings',this)">⚙️ Settings</button>
+</div>
+</div>
+
+<div class="main">
+<div class="topbar"><b>⚡ AHMAD DIGITAL SCHOOL -
