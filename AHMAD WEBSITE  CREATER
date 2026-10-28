@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AHMAD SCHOOL - WORKING</title>
+<style>
+*{box-sizing:border-box;font-family:Arial}
+body{margin:0;background:#050a14;color:white}
+.top{background:#081022;border-bottom:2px solid #00f5ff;padding:12px;text-align:center}
+.top h1{color:#00f5ff;margin:0;text-shadow:0 0 10px #00f5ff}
+.menu{display:flex;flex-wrap:wrap;background:#081022;border-bottom:1px solid #00f5ff44}
+.menu button{flex:1;min-width:100px;padding:12px;background:#0d1a33;color:#7ad9e8;border:none;border-right:1px solid #00f5ff22;cursor:pointer}
+.menu button.active{background:#00f5ff;color:#000;font-weight:bold;box-shadow:0 0 15px #00f5ff}
+.page{padding:15px}
+.card{background:#0a1930;border:1px solid #00f5ff44;border-radius:10px;padding:15px;margin-bottom:12px}
+input,select,textarea{width:100%;padding:10px;margin:5px 0;background:#050a14;border:1px solid #00f5ff44;border-radius:8px;color:white}
+.btn{width:100%;padding:12px;background:#00f5ff;color:#000;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin-top:6px;box-shadow:0 0 15px #00f5ff88}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{color:#00f5ff;padding:8px;border-bottom:1px solid #00f5ff44;text-align:left}
+td{padding:8px;border-bottom:1px solid #123050}
+</style>
+</head>
+<body>
+
+<div class="top">
+<h1>🎓 AHMAD DIGITAL SCHOOL</h1>
+<small style="color:#00f5ff">ALL INSIDE - FIXED VERSION - Developed by AHMAD</small>
+</div>
+
+<div class="menu">
+<button id="m1" class="active" onclick="showPage('p1')">Dashboard</button>
+<button id="m2" onclick="showPage('p2')">Students</button>
+<button id="m3" onclick="showPage('p3')">Teachers</button>
+<button id="m4" onclick="showPage('p4')">Marksheet</button>
+<button id="m5" onclick="showPage('p5')">Attendance</button>
+<button id="m6" onclick="showPage('p6')">Fees</button>
+<button id="m7" onclick="showPage('p7')">Results</button>
+<button id="m8" onclick="showPage('p8')">Parent</button>
+</div>
+
+<!-- PAGE 1 DASHBOARD -->
+<div id="p1" class="page">
+<div class="card">
+<h2 style="color:#00f5ff">Dashboard - All Inside</h2>
+<p>Students: <b id="cs">0</b> | Teachers: <b id="ct">0</b> | Results: <b id="cr">0</b> | Fees: <b id="cf">0</b></p>
+</div>
+<div class="card">
+<h3 style="color:#00f5ff">LIVE MARKSHEET TABLE</h3>
+<div style="overflow:auto">
+<table><tr><th>Name</th><th>Roll</th><th>Urdu</th><th>Eng</th><th>Math</th><th>Sci</th><th>Total</th><th>Grade</th></tr><tbody id="mainTable"></tbody></table>
+</div>
+</div>
+</div>
+
+<!-- PAGE 2 STUDENTS -->
+<div id="p2" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Add Student</h3>
+<input id="sr" placeholder="Roll e.g 101">
+<input id="sn" placeholder="Name e.g Ali Khan">
+<select id="sc"><option>9th</option><option>10th</option><option>8th</option></select>
+<input id="sf" placeholder="Father Name">
+<input id="sp" placeholder="Phone 0300...">
+<button class="btn" onclick="addStudent()">ADD STUDENT</button>
+</div>
+<div class="card">
+<h3>Students List - Delete Option Inside</h3>
+<table><tr><th>Roll</th><th>Name</th><th>Class</th><th>Action</th></tr><tbody id="stuTable"></tbody></table>
+</div>
+</div>
+
+<!-- PAGE 3 TEACHERS -->
+<div id="p3" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Add Teacher</h3>
+<input id="ti" placeholder="ID e.g T1">
+<input id="tn" placeholder="Name">
+<input id="ts" placeholder="Subject">
+<button class="btn" onclick="addTeacher()">ADD TEACHER</button>
+</div>
+<div class="card">
+<h3>Teachers List</h3>
+<table><tr><th>ID</th><th>Name</th><th>Subject</th><th>Action</th></tr><tbody id="teaTable"></tbody></table>
+</div>
+</div>
+
+<!-- PAGE 4 MARKSHEET -->
+<div id="p4" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Enter Marksheet - 6 Subjects</h3>
+<input id="mr" placeholder="Roll No">
+<input id="mu" type="number" placeholder="Urdu 100">
+<input id="me" type="number" placeholder="English 100">
+<input id="mm" type="number" placeholder="Math 100">
+<input id="ms" type="number" placeholder="Science 100">
+<input id="mi" type="number" placeholder="Islamiat 100">
+<input id="mp" type="number" placeholder="Pak Study 100">
+<button class="btn" onclick="saveMark()">SAVE MARKSHEET</button>
+<p id="msg" style="color:#00f5ff;margin-top:10px"></p>
+</div>
+</div>
+
+<!-- PAGE 5 ATTENDANCE -->
+<div id="p5" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Attendance - Har Cheez</h3>
+<input type="date" id="ad">
+<select id="ar"></select>
+<select id="as"><option>Present</option><option>Absent</option><option>Leave</option></select>
+<button class="btn" onclick="saveAtt()">Mark Attendance</button>
+<table style="margin-top:10px"><tr><th>Date</th><th>Roll</th><th>Name</th><th>Status</th></tr><tbody id="attTable"></tbody></table>
+</div>
+</div>
+
+<!-- PAGE 6 FEES -->
+<div id="p6" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Fees - Har Cheez</h3>
+<select id="fr"></select>
+<input id="fa" type="number" placeholder="Amount 2000">
+<select id="fm"><option>Jan</option><option>Feb</option><option>Mar</option><option>Apr</option><option>May</option></select>
+<button class="btn" onclick="saveFee()">Collect Fee</button>
+<table style="margin-top:10px"><tr><th>Roll</th><th>Name</th><th>Amount</th><th>Month</th></tr><tbody id="feeTable"></tbody></table>
+</div>
+</div>
+
+<!-- PAGE 7 RESULTS -->
+<div id="p7" class="page" style="display:none">
+<div class="card">
+<h3>All Results</h3>
+<input id="search" placeholder="Search..." oninput="render()">
+<table><tr><th>Roll</th><th>Name</th><th>Total/600</th><th>Grade</th></tr><tbody id="resTable"></tbody></table>
+</div>
+</div>
+
+<!-- PAGE 8 PARENT -->
+<div id="p8" class="page" style="display:none">
+<div class="card">
+<h3 style="color:#00f5ff">Parent Check - Roll No Se</h3>
+<input id="pr" placeholder="Roll e.g 101">
+<button class="btn" onclick="parentCheck()">VIEW RESULT CARD</button>
+<div id="pres" style="margin-top:15px"></div>
+</div>
+</div>
+
+<script>
+// SIMPLE WORKING CODE - NO BUG
+var ST = JSON.parse(localStorage.getItem('ST')||'{"101":{"name":"Ali Khan","class":"9th
